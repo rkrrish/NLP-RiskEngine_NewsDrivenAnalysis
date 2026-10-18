@@ -174,7 +174,7 @@ docker compose up -d
 ```
 
 Or run the one-click scripts in `scripts/`:
-- **Windows:** Double-click [`scripts/run_compose.bat`](file:///d:/Dev/projects/python/snp/scripts/run_compose.bat)
+- **Windows:** Double-click [`scripts/run_compose.bat`](scripts/run_compose.bat)
 - **Linux/macOS:** `bash scripts/run_compose.sh`
 
 ---
