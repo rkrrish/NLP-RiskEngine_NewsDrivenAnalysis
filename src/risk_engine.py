@@ -309,7 +309,7 @@ class FinBERTRiskEngine:
         print(f"[+] Loading FinBERT sentiment backbone ({finbert_model_name})...")
         self.finbert_tokenizer = AutoTokenizer.from_pretrained(finbert_model_name)
         self.finbert_model = AutoModelForSequenceClassification.from_pretrained(finbert_model_name)
-        self.finbert_model = self.finbert_model.to(self.device)
+        self.finbert_model = self.finbert_model.float().to(self.device)
         self.finbert_model.eval()
 
         # Map FinBERT label IDs to standard [positive, negative, neutral]
@@ -344,7 +344,7 @@ class FinBERTRiskEngine:
             self._load_deberta_weights(checkpoint_file)
         else:
             print(f"[!] Notice: Fine-tuned checkpoint (.pt) not found in '{deberta_dir}'. Using initialized DeBERTa classification weights (lightweight mode).")
-        self.deberta_model = self.deberta_model.to(self.device)
+        self.deberta_model = self.deberta_model.float().to(self.device)
         self.deberta_model.eval()
 
         # ----------------------------------------------------
@@ -416,12 +416,17 @@ class FinBERTRiskEngine:
         except Exception:
             state_dict = torch.load(checkpoint_path, map_location="cpu", weights_only=False)
 
+        # Ensure all checkpoint weights are float32 to prevent dtype mismatches
+        # (e.g., CPU-only PyTorch in Docker may not handle float16 matrix ops)
+        state_dict = {k: v.float() if v.is_floating_point() else v for k, v in state_dict.items()}
+
         missing_keys, unexpected_keys = self.deberta_model.load_state_dict(state_dict, strict=False)
         if missing_keys:
             print(f"[!] Missing DeBERTa keys ({len(missing_keys)}): {missing_keys[:3]}")
         if unexpected_keys:
             print(f"[!] Unexpected DeBERTa keys ({len(unexpected_keys)}): {unexpected_keys[:3]}")
         print("[+] DeBERTa weights successfully loaded.")
+
 
     def compute_sentiment(self, text: str) -> Tuple[float, str, Dict[str, float]]:
         """

@@ -179,8 +179,8 @@ function App() {
             <span className="material-icons-outlined">analytics</span>
           </div>
           <div className="header-text">
-            <h1>S&P 100 NLP Risk Engine</h1>
-            <p className="header-subtitle">Tactical Index Rebalancing Dashboard</p>
+            <h1>AI-Powered Explainable Risk Engine</h1>
+            <p className="header-subtitle">S&P 100 Index Tactical Rebalancing</p>
           </div>
         </div>
 
