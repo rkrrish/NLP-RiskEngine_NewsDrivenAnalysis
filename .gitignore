@@ -1,4 +1,4 @@
 .env
 src/output/*
 src/__pycache__/*
-/docs/prompts/
+docs/

@@ -1,11 +1,4 @@
-# S&P100|AI-Driven Explainable Risk Engine- S&P Global & Crisil Code to Connect Campus Hackathon 2026
- 
-**Candidate Name:** Krrish Swarnkar\
-**College Email ID:** 112415109@cse.iiitp.ac.in\
-**College / Campus:** Indian Institute of Information Technology, Pune\
-**Demo Video Link:** https://youtu.be/LXFkk9zTnVs \
-**Slide Deck Link:** https://docs.google.com/presentation/d/1MNXn83g2X4EZNzPk7pnN4YpO3Rtb_lZi3s5vk1COfYs/edit?usp=sharing
-
+# Explainable AI Risk Engine for News Driven Index Analysis
 
 ## 1. Project Overview
 **Business and Technical Problem**
@@ -40,11 +33,6 @@ The platform ensures end-to-end transparency through a deterministic event ledge
 │   ├── FinancialPhraseBank/          # Exploratory baseline dataset (legacy)
 │   ├── live_mode_fetched/            # Real-time API response cache (Live Mode)
 │   └── mock_store_2/                 # Pre-fetched timestep payloads (Demo Mode)
-│
-├── docs/                             # Documentation assets
-│   ├── architecture.png              # System design & data flow diagram
-│   ├── presentation.pdf              # Presentation deck
-│   └── prompts/                      # prompts I had used for bulding some of the modules 
 │
 ├── frontend/                         # React + Vite interactive dashboard
 │   ├── src/                          # Dashboard components (WeightChart, StressTestPanel, etc.)
@@ -87,11 +75,7 @@ The platform ensures end-to-end transparency through a deterministic event ledge
 
 ---
 
-## 2. Architecture & Tech Stack
-
-### System Design & Data Flow
-
-![System Architecture](docs/architecture.png)
+## 2. Tech Stack
 
 ### Key Frameworks & Libraries
 
@@ -144,8 +128,8 @@ The platform ensures end-to-end transparency through a deterministic event ledge
 
 
 ```bash
-git clone https://github.com/rkrrish/IIIT_Pune-KrrishSwarnkar-CodeToConnect2026.git
-cd IIIT_Pune-KrrishSwarnkar-CodeToConnect2026
+git clone https://github.com/rkrrish/NLP-RiskEngine_NewsDrivenAnalysis
+cd NLP-RiskEngine_NewsDrivenAnalysis
 ```
 
 **Note:** After cloning, extract and put the output weights file from the drive link provided below, into `src/output/deberta_event_classifier/`.
